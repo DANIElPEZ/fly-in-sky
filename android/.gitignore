@@ -1,0 +1,16 @@
+.gradle/
+.kotlin/
+build/
+app/.cxx/
+app/src/debug/
+app/src/profile/
+app/src/main/java
+app/src/main/kotlin
+gradle-wrapper.jar
+build.gradle.kts
+gradlew.properties
+gradlew
+gradlew.bat
+local.properties
+settings.gradle.kts
+weatherfly_android.iml

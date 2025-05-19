@@ -1,0 +1,73 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:weatherfly/color/colors.dart';
+
+class AirportInfo extends StatelessWidget {
+  AirportInfo({required this.ICAO, required this.Name, required this.altitude});
+
+  String Name, ICAO, altitude;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 80,
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: colorsPalette['dark blue'],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height,
+            width: 5,
+            color: colorsPalette['arrow blue'],
+          ),
+          SizedBox(width: 17),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  Name,
+                  style: GoogleFonts.nunito(
+                    color: colorsPalette['title'],
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Expanded(child: Container()),
+                Row(
+                  children: [
+                    Text(ICAO,
+                        style: GoogleFonts.nunito(
+                          color: colorsPalette['content'],
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        )
+                    ),
+                    SizedBox(width: 20),
+                    Text('$altitude FT',
+                        style: GoogleFonts.nunito(
+                          color: colorsPalette['content'],
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        )
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Expanded(child: Container()),
+          Icon(Icons.location_on, color: colorsPalette['title'], size: 34),
+          SizedBox(width: 15),
+        ],
+      ),
+    );
+  }
+}
