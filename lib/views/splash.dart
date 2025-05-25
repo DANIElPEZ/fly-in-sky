@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
-import 'package:weatherfly/views/home.dart';
+import 'package:flyinsky/views/home.dart';
 
 class splashPage extends StatefulWidget {
   @override

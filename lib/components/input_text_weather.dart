@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flyinsky/color/colors.dart';
+import 'package:flyinsky/provider/provider.dart';
 import 'package:provider/provider.dart';
-import 'package:weatherfly/provider/provider.dart';
-import 'package:weatherfly/color/colors.dart';
 
 class InputText extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<WeatherProvider>(context);
@@ -30,7 +31,7 @@ class InputText extends StatelessWidget {
           borderRadius: BorderRadius.circular(20)
         )
       ),
-      onSubmitted: (value) => provider.fetchWeather(value)
+      onSubmitted: (value) => provider.fetchWeather(value.trim())
     );
   }
 }

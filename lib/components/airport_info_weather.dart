@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:weatherfly/color/colors.dart';
+import 'package:flyinsky/color/colors.dart';
 
 class AirportInfo extends StatelessWidget {
   AirportInfo({required this.ICAO, required this.Name, required this.altitude});
@@ -26,9 +26,9 @@ class AirportInfo extends StatelessWidget {
             width: 5,
             color: colorsPalette['arrow blue'],
           ),
-          SizedBox(width: 17),
+          SizedBox(width: 10),
           Container(
-            margin: EdgeInsets.symmetric(vertical: 10),
+            margin: EdgeInsets.symmetric(vertical: 13),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -36,7 +36,7 @@ class AirportInfo extends StatelessWidget {
                   Name,
                   style: GoogleFonts.nunito(
                     color: colorsPalette['title'],
-                    fontSize: 17,
+                    fontSize: 15,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -65,7 +65,7 @@ class AirportInfo extends StatelessWidget {
           ),
           Expanded(child: Container()),
           Icon(Icons.location_on, color: colorsPalette['title'], size: 34),
-          SizedBox(width: 15),
+          SizedBox(width: 7)
         ],
       ),
     );

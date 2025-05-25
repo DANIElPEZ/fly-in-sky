@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:weatherfly/color/colors.dart';
-import 'package:weatherfly/provider/provider.dart';
+import 'package:flyinsky/color/colors.dart';
+import 'package:flyinsky/provider/provider.dart';
 import 'package:provider/provider.dart';
-import 'package:weatherfly/views/weather.dart';
+import 'package:flyinsky/views/weather.dart';
+import 'package:flyinsky/views/checklist.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -37,7 +38,7 @@ class _HomeViewState extends State<HomeView> {
             NavigationDestination(icon: Icon(indexView==1?Icons.checklist_rtl:Icons.checklist_rtl_outlined, size: 34, color: indexView==1?colorsPalette['title']:colorsPalette['content']), label: '')
           ],
         ),
-        body: [WeatherView(), Container()][indexView]
+        body: [WeatherView(), CheclistView()][indexView]
       ),
     );
   }

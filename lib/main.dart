@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:weatherfly/views/splash.dart';
+import 'package:flyinsky/views/splash.dart';
 import 'package:provider/provider.dart';
-import 'package:weatherfly/provider/provider.dart';
+import 'package:flyinsky/provider/provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

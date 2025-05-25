@@ -28,6 +28,7 @@ class WeatherProvider extends ChangeNotifier {
       return;
     }
     data = await get_weather_information(icao);
+    print(data);
     isLoading = false;
     notifyListeners();
   }

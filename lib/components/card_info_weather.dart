@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:weatherfly/color/colors.dart';
+import 'package:flyinsky/color/colors.dart';
 
-class CardClouds extends StatelessWidget {
-  CardClouds({required this.clouds});
+class CardInfo extends StatelessWidget {
+  CardInfo({required this.title, required this.content});
 
-  List<dynamic> clouds;
+  String title, content;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 90,
+      width: MediaQuery.of(context).size.width,
       clipBehavior: Clip.antiAlias,
       padding: EdgeInsets.symmetric(horizontal: 13, vertical: 17),
       decoration: BoxDecoration(
@@ -21,22 +21,21 @@ class CardClouds extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Clouds',
+            title,
             style: GoogleFonts.nunito(
               fontSize: 15,
               fontWeight: FontWeight.w600,
               color: colorsPalette['title'],
             ),
           ),
-          Expanded(child: Container()),
+          SizedBox(height: 7),
           Text(
-            clouds.toString(),
+            content,
             style: GoogleFonts.nunito(
               fontSize: 14,
               color: colorsPalette['content'],
             ),
-          ),
-          Expanded(child: Container())
+          )
         ],
       ),
     );
