@@ -5,7 +5,8 @@ import 'package:flyinsky/color/colors.dart';
 class AirportInfo extends StatelessWidget {
   AirportInfo({required this.ICAO, required this.Name, required this.altitude});
 
-  String Name, ICAO, altitude;
+  String Name, ICAO;
+  int altitude;
 
   @override
   Widget build(BuildContext context) {

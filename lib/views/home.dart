@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flyinsky/color/colors.dart';
-import 'package:flyinsky/provider/provider.dart';
-import 'package:provider/provider.dart';
 import 'package:flyinsky/views/weather.dart';
 import 'package:flyinsky/views/checklist.dart';
+import 'package:flyinsky/views/charts.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -11,13 +10,6 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  @override
-  void initState() {
-    super.initState();
-    final provider = Provider.of<WeatherProvider>(context, listen: false);
-    provider.checkConnection();
-  }
-
   int indexView = 0;
 
   @override
@@ -34,11 +26,12 @@ class _HomeViewState extends State<HomeView> {
             setState(() => indexView = index);
           },
           destinations: [
-            NavigationDestination(icon: Icon(indexView==0?Icons.air:Icons.air_outlined, size: 34, color: indexView==0?colorsPalette['title']:colorsPalette['content']), label: ''),
-            NavigationDestination(icon: Icon(indexView==1?Icons.checklist_rtl:Icons.checklist_rtl_outlined, size: 34, color: indexView==1?colorsPalette['title']:colorsPalette['content']), label: '')
+            NavigationDestination(icon: Icon(indexView==0?Icons.cloud:Icons.cloud_outlined, size: 34, color: indexView==0?colorsPalette['title']:colorsPalette['content']), label: ''),
+            NavigationDestination(icon: Icon(Icons.checklist, size: 34, color: indexView==1?colorsPalette['title']:colorsPalette['content']), label: ''),
+            NavigationDestination(icon: Icon(indexView==2?Icons.map:Icons.map_outlined, size: 34, color: indexView==2?colorsPalette['title']:colorsPalette['content']), label: '')
           ],
         ),
-        body: [WeatherView(), CheclistView()][indexView]
+        body: [WeatherView(), CheclistView(), ChartView()][indexView]
       ),
     );
   }

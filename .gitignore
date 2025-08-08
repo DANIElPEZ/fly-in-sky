@@ -5,6 +5,7 @@ test/
 .flutter-plugins
 .flutter-plugins-dependencies
 .metadata
+.env
 analysis_options.yaml
 pubspec.lock
 weatherfly.iml

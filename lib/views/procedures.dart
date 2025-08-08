@@ -26,7 +26,6 @@ class StateViewChecklist extends State<ViewChecklist> {
   }
 
   Future<void> loadPDF() async {
-    print(widget.pdf_file);
     final byteData = await rootBundle.load(
       'assets/checklist/${widget.pdf_file}',
     );

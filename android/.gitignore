@@ -6,11 +6,10 @@ app/src/debug/
 app/src/profile/
 app/src/main/java
 app/src/main/kotlin
-gradle-wrapper.jar
+/gradle
 build.gradle.kts
-gradlew.properties
+*.properties
 gradlew
-gradlew.bat
-local.properties
+*.bat
 settings.gradle.kts
 weatherfly_android.iml

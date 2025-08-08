@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flyinsky/color/colors.dart';
-import 'package:flyinsky/provider/provider.dart';
-import 'package:provider/provider.dart';
 
 class InputText extends StatelessWidget {
+  InputText({required this.onSubmit});
+  final void Function(String) onSubmit;
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<WeatherProvider>(context);
     return TextField(
       cursorColor: colorsPalette['title'],
       style: GoogleFonts.nunito(
@@ -31,7 +30,7 @@ class InputText extends StatelessWidget {
           borderRadius: BorderRadius.circular(20)
         )
       ),
-      onSubmitted: (value) => provider.fetchWeather(value.trim())
+      onSubmitted: onSubmit
     );
   }
 }
