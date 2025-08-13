@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flyinsky/color/colors.dart';
-import 'package:flyinsky/views/procedures.dart';
+import 'package:flyinsky/views/checklistViews/cheklistProceduresView.dart';
 
 class CardAircraft extends StatelessWidget{
   CardAircraft({required this.title, required this.pdf_file});

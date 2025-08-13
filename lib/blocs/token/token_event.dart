@@ -1,8 +1,12 @@
 abstract class TokenEvent{}
 
-class GetToken extends TokenEvent{}
+class getToken extends TokenEvent{}
 
-class SaveToken extends TokenEvent{
+class saveToken extends TokenEvent{
   final String code;
-  SaveToken(this.code);
+  saveToken(this.code);
 }
+
+class getTokenCode extends TokenEvent{}
+
+class checkToken extends TokenEvent{}

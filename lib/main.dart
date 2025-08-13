@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flyinsky/views/splash.dart';
+import 'package:flyinsky/views/splashView.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flyinsky/repository/weather_repository.dart';
 import 'package:flyinsky/repository/charts_repository.dart';
 import 'package:flyinsky/repository/token_repository.dart';
+import 'package:flyinsky/repository/checklist_repository.dart';
 import 'package:flyinsky/blocs/weather/weather_bloc.dart';
 import 'package:flyinsky/blocs/token/token_bloc.dart';
 import 'package:flyinsky/blocs/charts/chart_bloc.dart';
+import 'package:flyinsky/blocs/checklist/checklist_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,6 +36,9 @@ class Main extends StatelessWidget {
         RepositoryProvider<TokenRepository>(
           create: (context) => TokenRepository(),
         ),
+        RepositoryProvider<CheckListRepository>(
+          create: (context) => CheckListRepository(),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -56,7 +61,6 @@ class Main extends StatelessWidget {
           BlocProvider<chartsBloc>(
             create: (context) {
               final tokenBloc = BlocProvider.of<TokenBloc>(context);
-              final subscription = tokenBloc.stream.listen((event) {});
               final chartsrepository = RepositoryProvider.of<ChartsRepository>(context);
 
               return chartsBloc(
@@ -64,7 +68,10 @@ class Main extends StatelessWidget {
                 chartsrepository: chartsrepository
               );
             }
-          )
+          ),
+          BlocProvider<ChecklistBloc>(create: (context)=>ChecklistBloc(
+            checklistrepository: RepositoryProvider.of<CheckListRepository>(context)
+          ))
         ],
         child: Builder(
           builder: (context) {

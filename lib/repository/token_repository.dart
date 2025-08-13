@@ -43,7 +43,13 @@ class TokenRepository {
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         final accessToken = data['access_token'];
-        return {'token': accessToken, 'expires_in': data['expires_in']};
+        final expiresIn = data['expires_in'];
+        final DateTime now = DateTime.now();
+        final DateTime expirationDate = now.add(Duration(seconds: expiresIn));
+        final day = expirationDate.day;
+        final month = expirationDate.month;
+        final year = expirationDate.year;
+        return {'token': accessToken, 'day': day, 'month': month, 'year': year};
       }
     } catch (e) {
       print(e);
@@ -59,7 +65,14 @@ class TokenRepository {
   Future<void> saveToken(Map<String, dynamic> token)async {
     final db=DatabaseHelper();
     final accessToken=token['token'];
-    final expiresDate=token['expires_in'];
-    await db.saveToken(accessToken, expiresDate);
+    final day=token['day'];
+    final month=token['month'];
+    final year=token['year'];
+    await db.saveToken(accessToken, day, month, year);
+  }
+
+  Future<bool> isTokenExpired()async{
+    final db=DatabaseHelper();
+    return await db.isTokenExpired();
   }
 }

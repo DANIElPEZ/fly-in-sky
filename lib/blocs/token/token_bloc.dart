@@ -6,7 +6,7 @@ import 'package:flyinsky/repository/token_repository.dart';
 class TokenBloc extends Bloc<TokenEvent, TokenState>{
   final TokenRepository tokenRepository;
   TokenBloc({required this.tokenRepository}) : super(TokenState.initial()){
-    on<GetToken>((event, emit)async{
+    on<getToken>((event, emit)async{
       try {
         final token = await tokenRepository.getToken();
         emit(state.copyWith(tokenAccess: token));
@@ -14,13 +14,24 @@ class TokenBloc extends Bloc<TokenEvent, TokenState>{
         print(e);
       }
     });
-    on<SaveToken>((event, emit)async{
+    on<saveToken>((event, emit)async{
       try {
         final result = await tokenRepository.getAccessToken(event.code);
         await tokenRepository.saveToken(result);
       }catch(e){
         print(e);
       }
+    });
+    on<getTokenCode>((event, emit)async{
+      try {
+        await tokenRepository.authVatsim();
+      }catch(e){
+        print(e);
+      }
+    });
+    on<checkToken>((event, emit)async{
+      final isExpired=await tokenRepository.isTokenExpired();
+      emit(state.copyWith(isExpired: isExpired));
     });
   }
 }

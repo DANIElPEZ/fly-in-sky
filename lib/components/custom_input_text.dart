@@ -3,8 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flyinsky/color/colors.dart';
 
 class InputText extends StatelessWidget {
-  InputText({required this.onSubmit});
+  InputText({required this.onSubmit, this.hintText});
   final void Function(String) onSubmit;
+  final String? hintText;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class InputText extends StatelessWidget {
         fontWeight: FontWeight.bold
       ),
       decoration: InputDecoration(
-        hintText: 'ICAO',
+        hintText: hintText ?? 'ICAO',
         filled: true,
         prefixIcon: Icon(Icons.search,
         color: colorsPalette['title']),

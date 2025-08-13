@@ -9,6 +9,7 @@ class ChartsRepository{
         Uri.parse('${dotenv.env['API_BASIC_ROUTE']}airports/$icao/charts/grouped'),
         headers: {
           'Authorization': 'Bearer $accessToken',
+          'Accept': 'application/json'
         },
       );
       if (response.statusCode == 200) {
@@ -26,6 +27,7 @@ class ChartsRepository{
             });
           }
         });
+        print(extractedCharts);
 
         return extractedCharts;
       }

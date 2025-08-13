@@ -7,7 +7,7 @@ class setIcao extends chartsEvent{
 
 class loadCharts extends chartsEvent{}
 
-class setUrlChart extends chartsEvent{
+class loadPdfChart extends chartsEvent{
   final String idChart;
-  setUrlChart(this.idChart);
+  loadPdfChart(this.idChart);
 }

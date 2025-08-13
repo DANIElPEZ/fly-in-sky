@@ -12,12 +12,10 @@ class chartsBloc extends Bloc<chartsEvent, chartsState>{
   String token='';
 
   chartsBloc({required this.tokenBloc, required this.chartsrepository}):super(chartsState.initial()){
-    tokenSubscription = tokenBloc.stream.listen((event) {
-      token = event.tokenAccess;
-    });
+    token=tokenBloc.state.tokenAccess;
 
     on<setIcao>((event, emit){
-      emit(state.copyWith(icao: event.icao));//send ica from keyboard on ui
+      emit(state.copyWith(icao: event.icao));
     });
     on<loadCharts>((event, emit)async{
       try {
@@ -27,7 +25,7 @@ class chartsBloc extends Bloc<chartsEvent, chartsState>{
         print(e);
       }
     });
-    on<setUrlChart>((event, emit)async{
+    on<loadPdfChart>((event, emit)async{
       try{
         final url=await chartsrepository.getChart(token, event.idChart);//send from id from clicking ui
         emit(state.copyWith(urlChart: url));

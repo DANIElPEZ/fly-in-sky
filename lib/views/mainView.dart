@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flyinsky/color/colors.dart';
-import 'package:flyinsky/views/weather.dart';
-import 'package:flyinsky/views/checklist.dart';
-import 'package:flyinsky/views/charts.dart';
+import 'package:flyinsky/views/weatherViews/weatherView.dart';
+import 'package:flyinsky/views/checklistViews/checklistView.dart';
+import 'package:flyinsky/views/chartsViews/mainChartView.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -10,7 +10,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  int indexView = 0;
+  int indexView = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class _HomeViewState extends State<HomeView> {
             NavigationDestination(icon: Icon(indexView==2?Icons.map:Icons.map_outlined, size: 34, color: indexView==2?colorsPalette['title']:colorsPalette['content']), label: '')
           ],
         ),
-        body: [WeatherView(), CheclistView(), ChartView()][indexView]
+        body: [WeatherView(), CheclistView(), Mainchartview()][indexView]
       ),
     );
   }
