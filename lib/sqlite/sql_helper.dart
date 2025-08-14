@@ -16,7 +16,7 @@ class DatabaseHelper {
     String path = join(await getDatabasesPath(), 'token.db');
     return await openDatabase(
       path,
-      version: 2,
+      version: 1,
       onCreate: (db, version) {
         db.execute('''
           CREATE TABLE token(
@@ -27,19 +27,7 @@ class DatabaseHelper {
             year INTEGER
           )
       ''');
-      },
-      onUpgrade: (db, oldVersion, newVersion) async {
-        await db.execute('DROP TABLE IF EXISTS token');
-        await db.execute('''
-        CREATE TABLE token(
-          id INTEGER PRIMARY KEY,
-          token TEXT,
-          day INTEGER,
-          month INTEGER,
-          year INTEGER
-        )
-      ''');
-      },
+      }
     );
   }
 

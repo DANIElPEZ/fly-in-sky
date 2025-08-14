@@ -10,7 +10,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  int indexView = 2;
+  int indexView = 1;
 
   @override
   Widget build(BuildContext context) {

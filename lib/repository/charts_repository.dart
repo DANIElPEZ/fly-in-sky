@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class ChartsRepository{
-  Future<List<Map<String, String>>> getGroupedCharts(accessToken, icao) async {
+  Future<Map<String, List<Map<String, String>>>> getGroupedCharts(accessToken, icao) async {
     try {
       final response = await http.get(
         Uri.parse('${dotenv.env['API_BASIC_ROUTE']}airports/$icao/charts/grouped'),
@@ -16,6 +16,7 @@ class ChartsRepository{
         final Map<String, dynamic> json = jsonDecode(response.body);
         final data = json['data'] as Map<String, dynamic>;
         final List<Map<String, String>> extractedCharts = [];
+        final Map<String, List<Map<String, String>>> groupedCharts = {};
 
         data.forEach((principalId, items) {
           for (final item in items) {
@@ -27,14 +28,18 @@ class ChartsRepository{
             });
           }
         });
-        print(extractedCharts);
 
-        return extractedCharts;
+        for(var chart in extractedCharts){
+          final category=chart['chart_type'];
+          groupedCharts.putIfAbsent(category!, () => []).add(chart);
+        }
+
+        return groupedCharts;
       }
     }catch(e){
       print('Error: $e');
     }
-    return [];
+    return {};
   }
 
   Future<String> getChart(accessToken, idChart) async {

@@ -51,8 +51,7 @@ class StateViewChecklist extends State<ViewChecklist> {
             loading
                 ? Center(child: CircularProgressIndicator())
                 : PDFView(filePath: localPath,
-            swipeHorizontal: true,
-                //nightMode: true
+            swipeHorizontal: true
           ),
       ),
       floatingActionButton: FloatingActionButton(

@@ -27,6 +27,7 @@ class ValidationView extends StatelessWidget {
                 onSubmit: (value) {
                   context.read<TokenBloc>().add(saveToken(value.trim()));
                   context.read<TokenBloc>().add(getToken());
+                  context.read<TokenBloc>().add(checkToken());
                 },
               ),
               SizedBox(height: 20),
